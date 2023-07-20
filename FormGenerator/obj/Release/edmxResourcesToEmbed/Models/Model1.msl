@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FormGeneratorModelStoreContainer" CdmEntityContainer="FormGeneratorEntities">
+    <EntitySetMapping Name="FieldTypes">
+      <EntityTypeMapping TypeName="FormGeneratorModel.FieldType">
+        <MappingFragment StoreEntitySet="FieldTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormFields">
+      <EntityTypeMapping TypeName="FormGeneratorModel.FormField">
+        <MappingFragment StoreEntitySet="FormFields">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="TextBefore" ColumnName="TextBefore" />
+          <ScalarProperty Name="TextAfter" ColumnName="TextAfter" />
+          <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+          <ScalarProperty Name="SelectListId" ColumnName="SelectListId" />
+          <ScalarProperty Name="FieldOrder" ColumnName="FieldOrder" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+          <ScalarProperty Name="MinLength" ColumnName="MinLength" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Forms">
+      <EntityTypeMapping TypeName="FormGeneratorModel.Form">
+        <MappingFragment StoreEntitySet="Forms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SelectedListItems">
+      <EntityTypeMapping TypeName="FormGeneratorModel.SelectedListItem">
+        <MappingFragment StoreEntitySet="SelectedListItems">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ListId" ColumnName="ListId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SelectLists">
+      <EntityTypeMapping TypeName="FormGeneratorModel.SelectList">
+        <MappingFragment StoreEntitySet="SelectLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FormGeneratorModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSubmissions">
+      <EntityTypeMapping TypeName="FormGeneratorModel.UserSubmission">
+        <MappingFragment StoreEntitySet="UserSubmissions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubmissionTime" ColumnName="SubmissionTime" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSubmissionValues">
+      <EntityTypeMapping TypeName="FormGeneratorModel.UserSubmissionValue">
+        <MappingFragment StoreEntitySet="UserSubmissionValues">
+          <ScalarProperty Name="SubmissionId" ColumnName="SubmissionId" />
+          <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+          <ScalarProperty Name="SubmittedValue" ColumnName="SubmittedValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

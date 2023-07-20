@@ -1,0 +1,25 @@
+﻿@model IEnumerable<FormGenerator.Models.UserSubmissionValue>
+
+
+@Styles.Render("~/Content/css/css.css")
+
+@Styles.Render("~/Content/lib/bootstrap/dist/css/bootstrap.min.css")
+<div class="test">
+    <div class="registration-form">
+        <form asp-action="Create">
+            @foreach (var item in Model)
+            {
+                <div class="form-group">
+
+                    @FormGenerator.Controllers.UserSubmissionValuesController.GetFieldCaption(item.FieldId)
+
+                    <input value="@item.SubmittedValue" type="text" class="form-control item" id="username" readonly l="Form Name">
+                </div>
+
+
+
+            }
+        </form>
+
+    </div>
+</div>

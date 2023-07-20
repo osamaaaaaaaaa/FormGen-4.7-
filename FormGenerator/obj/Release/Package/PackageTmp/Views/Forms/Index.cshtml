@@ -1,0 +1,84 @@
+﻿@model IEnumerable<FormGenerator.Models.Form>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<table class="table">
+
+    <tbody>
+        <div class="col-12 col-md-3 text-center">
+
+               
+            <a asp-action="Create" href="@Url.Action("Create")" class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                  Add New Form
+
+
+            </a>
+
+
+
+
+        </div>
+        @foreach (var item in Model)
+        {
+
+            <div class="d-style btn btn-brc-tp border-2 bgc-white btn-outline-blue btn-h-outline-blue btn-a-outline-blue w-100 my-2 py-3 shadow-sm">
+
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-4">
+                        <h4 class="pt-3 text-170 text-600 text-primary-d1 letter-spacing">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </h4>
+
+                        <div class="text-secondary-d1 text-120">
+                            Active Statue
+                            <div>
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+
+                    </div>
+
+
+
+                    <div class="col-12 col-md-3 text-center">
+
+                        <a  href="@Url.Action("Edit",new { id=item.Id})" class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">
+
+
+                            <i class="fa fa-wrench" aria-hidden="true"></i> Edit
+                        </a>
+                        <a href="@Url.Action("Delete",new { id=item.Id})" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+
+                            <i class="fa fa-trash-o fa-lg"></i> Delete
+                        </a>
+
+                        <div class="mt-15" style="margin:10px !important">
+                            <a href=" @Url.Action("Index","formfields",new { id=item.Id})" asp-route-id="@item.Id" asp-controller="formfields" asp-action="Index" class="f-n-hover btn btn-warning btn-raised px-4 py-25 w-75 text-600" style="width:175px !important">Mange Fields</a>
+                        </div>
+                        <div class="mt-15" style="margin:10px !important">
+                            <a  href=" @Url.Action("Index","UserSubmissions",new { id=item.Id})" asp-route-id="@item.Id" asp-controller="UserSubmissions" asp-action="Index" class="f-n-hover btn btn-secondary btn-raised px-4 py-25 w-75 text-600" style="width:175px !important">
+                                See Results
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    </tbody>
+
+
+
+
+</table>

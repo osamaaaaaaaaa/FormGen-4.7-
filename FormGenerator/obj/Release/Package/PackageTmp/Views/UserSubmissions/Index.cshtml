@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FormGenerator.Models.UserSubmission>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table class="table table-striped" style="width:100% !important">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubmissionTime)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="width:100%">
+        @foreach (var item in Model)
+        {
+            <tr style="width:100%">
+                <td style="width:100%">
+                    @Html.DisplayFor(modelItem => item.SubmissionTime)
+                </td>
+
+
+                <td>
+                    <div class="mt-15" style="margin:10px !important">
+                        <a href="@Url.Action("Index","UserSubmissionValues",new { id =item.Id})" asp-route-id="@item.Id" asp-controller="UserSubmissionValues" asp-action="Index" class="f-n-hover btn btn-secondary btn-raised px-4 py-25 w-75 text-600" style="width:175px !important">
+                            See Values
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

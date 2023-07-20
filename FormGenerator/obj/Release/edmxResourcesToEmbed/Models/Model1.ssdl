@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FormGeneratorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FieldTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormFields">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Caption" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="TextBefore" Type="nvarchar(max)" />
+    <Property Name="TextAfter" Type="nvarchar(max)" />
+    <Property Name="FieldTypeId" Type="tinyint" Nullable="false" />
+    <Property Name="SelectListId" Type="int" />
+    <Property Name="FieldOrder" Type="tinyint" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="MaxValue" Type="nvarchar(max)" />
+    <Property Name="MinValue" Type="nvarchar(max)" />
+    <Property Name="MaxLength" Type="int" />
+    <Property Name="MinLength" Type="int" />
+    <Property Name="DefaultValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Forms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SelectedListItems">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ListId" Type="int" />
+    <Property Name="Name" Type="nchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="SelectLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserSubmissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubmissionTime" Type="datetime" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSubmissionValues">
+    <Key>
+      <PropertyRef Name="SubmissionId" />
+      <PropertyRef Name="FieldId" />
+    </Key>
+    <Property Name="SubmissionId" Type="bigint" Nullable="false" />
+    <Property Name="FieldId" Type="bigint" Nullable="false" />
+    <Property Name="SubmittedValue" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_FormFields_FormFields">
+    <End Role="FieldTypes" Type="Self.FieldTypes" Multiplicity="1" />
+    <End Role="FormFields" Type="Self.FormFields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FieldTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormFields">
+        <PropertyRef Name="FieldTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormFields_Forms">
+    <End Role="Forms" Type="Self.Forms" Multiplicity="1" />
+    <End Role="FormFields" Type="Self.FormFields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Forms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormFields">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormFields_SelectLists">
+    <End Role="SelectLists" Type="Self.SelectLists" Multiplicity="0..1" />
+    <End Role="FormFields" Type="Self.FormFields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SelectLists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormFields">
+        <PropertyRef Name="SelectListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SelectedListItems_SelectLists">
+    <End Role="SelectLists" Type="Self.SelectLists" Multiplicity="0..1" />
+    <End Role="SelectedListItems" Type="Self.SelectedListItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SelectLists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SelectedListItems">
+        <PropertyRef Name="ListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSubmissions_Forms">
+    <End Role="Forms" Type="Self.Forms" Multiplicity="1" />
+    <End Role="UserSubmissions" Type="Self.UserSubmissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Forms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserSubmissions">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSubmissionValues_FormFields">
+    <End Role="FormFields" Type="Self.FormFields" Multiplicity="1" />
+    <End Role="UserSubmissionValues" Type="Self.UserSubmissionValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormFields">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserSubmissionValues">
+        <PropertyRef Name="FieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSubmissionValues_UserSubmissions">
+    <End Role="UserSubmissions" Type="Self.UserSubmissions" Multiplicity="1" />
+    <End Role="UserSubmissionValues" Type="Self.UserSubmissionValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSubmissions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserSubmissionValues">
+        <PropertyRef Name="SubmissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FormGeneratorModelStoreContainer">
+    <EntitySet Name="FieldTypes" EntityType="Self.FieldTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormFields" EntityType="Self.FormFields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SelectedListItems" EntityType="Self.SelectedListItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SelectLists" EntityType="Self.SelectLists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSubmissions" EntityType="Self.UserSubmissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSubmissionValues" EntityType="Self.UserSubmissionValues" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FormFields_FormFields" Association="Self.FK_FormFields_FormFields">
+      <End Role="FieldTypes" EntitySet="FieldTypes" />
+      <End Role="FormFields" EntitySet="FormFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormFields_Forms" Association="Self.FK_FormFields_Forms">
+      <End Role="Forms" EntitySet="Forms" />
+      <End Role="FormFields" EntitySet="FormFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormFields_SelectLists" Association="Self.FK_FormFields_SelectLists">
+      <End Role="SelectLists" EntitySet="SelectLists" />
+      <End Role="FormFields" EntitySet="FormFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SelectedListItems_SelectLists" Association="Self.FK_SelectedListItems_SelectLists">
+      <End Role="SelectLists" EntitySet="SelectLists" />
+      <End Role="SelectedListItems" EntitySet="SelectedListItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSubmissions_Forms" Association="Self.FK_UserSubmissions_Forms">
+      <End Role="Forms" EntitySet="Forms" />
+      <End Role="UserSubmissions" EntitySet="UserSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSubmissionValues_FormFields" Association="Self.FK_UserSubmissionValues_FormFields">
+      <End Role="FormFields" EntitySet="FormFields" />
+      <End Role="UserSubmissionValues" EntitySet="UserSubmissionValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSubmissionValues_UserSubmissions" Association="Self.FK_UserSubmissionValues_UserSubmissions">
+      <End Role="UserSubmissions" EntitySet="UserSubmissions" />
+      <End Role="UserSubmissionValues" EntitySet="UserSubmissionValues" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

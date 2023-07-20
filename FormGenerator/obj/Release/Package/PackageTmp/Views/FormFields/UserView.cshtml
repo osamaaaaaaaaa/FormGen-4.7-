@@ -1,0 +1,101 @@
+﻿@model IEnumerable<FormGenerator.Models.FormField>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/css/site.css" />
+    <link rel="stylesheet" href="~/Content/css/css.css" />
+
+
+    <link rel="stylesheet" href="~/Content/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/Content/assets/css/templatemo-space-dynamic.css">
+    <link rel="stylesheet" href="~/Content/assets/css/animated.css">
+    <link rel="stylesheet" href="~/Content/assets/css/owl.css">
+</head>
+
+
+<body>
+
+
+   
+
+   <div class="test">
+       <div class="registration-form">
+
+
+
+
+           @using (Html.BeginForm("UserSubmmitAction", "FormFields"))
+           {
+               @Html.AntiForgeryToken()
+
+           <div class="form-horizontal">
+               <div class="form-icon">
+                   <a class="logo">
+                       <h4>Las<span>Flores</span></h4>
+                   </a>
+                   <br />
+               </div>
+               @Html.HiddenFor(model => @Model.FirstOrDefault().FormId, new { htmlAttributes = new { @class = "form-control" } })<br />
+
+
+               @foreach (var item in Model)
+               {
+
+                   @Html.Raw(FormGenerator.Models.FormGenComponent.GenerateField(item.Id))
+                   <input type="hidden" value="@item.Id" name="FieldTypeId" />
+
+
+               }  <div class="form-group">
+                   <input type="submit" value="Submit" class="btn btn-block create-account" />
+               </div>
+           </div>
+           }
+
+
+
+       </div>
+</div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/imagesloaded.js"></script>
+    <script src="assets/js/templatemo-custom.js"></script>
+   
+</body>
+</html>
+
+
+
+
+

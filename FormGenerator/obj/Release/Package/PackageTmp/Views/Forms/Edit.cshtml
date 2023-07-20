@@ -1,0 +1,49 @@
+﻿@model FormGenerator.Models.Form
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@Styles.Render("~/Content/css/css.css")
+
+@Styles.Render("~/Content/lib/bootstrap/dist/css/bootstrap.min.css")
+
+<div class="test">
+    <div class="registration-form">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.HiddenFor(model => model.Id)
+
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control item" } })
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control item" } })
+
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="create-account" />
+            </div>
+        }
+    </div>
+</div>@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
