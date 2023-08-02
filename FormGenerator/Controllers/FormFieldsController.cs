@@ -12,6 +12,7 @@ using SelectList = System.Web.Mvc.SelectList;
 
 namespace FormGenerator.Controllers
 {
+    [Authorize]
     public class FormFieldsController : Controller
     {
         private FormGeneratorEntities db = new FormGeneratorEntities();
@@ -31,12 +32,15 @@ namespace FormGenerator.Controllers
             return View( formGeneratorContext.ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult UserView(int id)
         {
             var dataToPass = db.FormFields.Where(f => f.IsActive && f.FormId == id).OrderBy(f => f.FieldOrder);
 
             return PartialView(dataToPass);
         }
+
+        [AllowAnonymous]
         public ActionResult UserSubmmitAction(List<String> Name, int FormId, List<int> FieldTypeId, [Bind(Include ="Id,SubmissionTime,FormId")] UserSubmission userSubmission)
 
         {
@@ -90,10 +94,10 @@ namespace FormGenerator.Controllers
         }
 
         // GET: FormFields/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             ViewBag.FieldTypeId = new SelectList(db.FieldTypes, "Id", "Name");
-            ViewBag.FormId = new SelectList(db.Forms, "Id", "Name");
+            ViewBag.FormId = new SelectList(db.Forms.Where(m=>m.Id==id), "Id", "Name");
             ViewBag.SelectListId = new SelectList(db.SelectLists, "Id", "Name");
             return View();
         }

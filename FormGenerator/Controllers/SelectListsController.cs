@@ -11,6 +11,7 @@ using SelectList = FormGenerator.Models.SelectList;
 
 namespace FormGenerator.Controllers
 {
+    [Authorize]
     public class SelectListsController : Controller
     {
         private FormGeneratorEntities db = new FormGeneratorEntities();

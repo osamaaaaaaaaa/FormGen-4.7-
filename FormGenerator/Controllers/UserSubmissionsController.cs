@@ -11,6 +11,7 @@ using SelectList = System.Web.Mvc.SelectList;
 
 namespace FormGenerator.Controllers
 {
+    [Authorize]
     public class UserSubmissionsController : Controller
     {
         private FormGeneratorEntities db = new FormGeneratorEntities();

@@ -25,12 +25,21 @@ namespace FormGenerator.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
+        public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
+        public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }
+        public virtual DbSet<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsers { get; set; }
+        public virtual DbSet<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
+        public virtual DbSet<aspnet_Profile> aspnet_Profile { get; set; }
+        public virtual DbSet<aspnet_Roles> aspnet_Roles { get; set; }
+        public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
+        public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
+        public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<FieldType> FieldTypes { get; set; }
         public virtual DbSet<FormField> FormFields { get; set; }
         public virtual DbSet<Form> Forms { get; set; }
         public virtual DbSet<SelectedListItem> SelectedListItems { get; set; }
         public virtual DbSet<SelectList> SelectLists { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserSubmission> UserSubmissions { get; set; }
         public virtual DbSet<UserSubmissionValue> UserSubmissionValues { get; set; }
     }

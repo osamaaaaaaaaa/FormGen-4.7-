@@ -36,9 +36,13 @@
 
                         <div class="text-secondary-d1 text-120">
                             Active Statue
-                            <div>
+                          
                                 @Html.DisplayFor(modelItem => item.IsActive)
-                            </div>
+                         
+                        </div>
+                        <div class="text-secondary-d1 text-120">
+                           <a href="@Url.Action("userView", "formfields", new {id=item.Id})" target="_blank">Form Link..</a>
+                           
                         </div>
                     </div>
 

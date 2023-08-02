@@ -10,6 +10,7 @@ using FormGenerator.Models;
 
 namespace FormGenerator.Controllers
 {
+    [Authorize]
     public class FormsController : Controller
     {
         private FormGeneratorEntities db = new FormGeneratorEntities();

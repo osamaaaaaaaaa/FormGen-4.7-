@@ -11,14 +11,16 @@ using SelectList = System.Web.Mvc.SelectList;
 
 namespace FormGenerator.Controllers
 {
+    [Authorize]
     public class SelectedListItemsController : Controller
     {
         private FormGeneratorEntities db = new FormGeneratorEntities();
 
         // GET: SelectedListItems
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var selectedListItems = db.SelectedListItems.Include(s => s.SelectList);
+            ViewData["ListId"] = id;
+            var selectedListItems = db.SelectedListItems.Where(s => s.ListId==id);
             return View(selectedListItems.ToList());
         }
 
@@ -38,9 +40,9 @@ namespace FormGenerator.Controllers
         }
 
         // GET: SelectedListItems/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.ListId = new SelectList(db.SelectLists, "Id", "Name");
+            ViewBag.ListId = new SelectList(db.SelectLists.Where(m=>m.Id==id), "Id", "Name");
             return View();
         }
 
@@ -51,15 +53,10 @@ namespace FormGenerator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,IsActive,ListId,Name")] SelectedListItem selectedListItem)
         {
-            if (ModelState.IsValid)
-            {
-                db.SelectedListItems.Add(selectedListItem);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ListId = new SelectList(db.SelectLists, "Id", "Name", selectedListItem.ListId);
-            return View(selectedListItem);
+            db.SelectedListItems.Add(selectedListItem);
+            db.SaveChanges();
+            return RedirectToAction("Index",new{id=selectedListItem.ListId });
+       
         }
 
         // GET: SelectedListItems/Edit/5
@@ -89,7 +86,7 @@ namespace FormGenerator.Controllers
             {
                 db.Entry(selectedListItem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new {id=selectedListItem.ListId});
             }
             ViewBag.ListId = new SelectList(db.SelectLists, "Id", "Name", selectedListItem.ListId);
             return View(selectedListItem);
