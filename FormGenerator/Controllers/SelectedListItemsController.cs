@@ -71,7 +71,8 @@ namespace FormGenerator.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListId = new SelectList(db.SelectLists, "Id", "Name", selectedListItem.ListId);
+            ViewBag.ListId = new SelectList(db.SelectLists.Where(m => m.Id == id), "Id", "Name");
+
             return View(selectedListItem);
         }
 

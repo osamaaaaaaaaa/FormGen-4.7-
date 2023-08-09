@@ -19,7 +19,7 @@
     <WebStackScaffolding_DbContextTypeFullName>FormGenerator.Models.FormGeneratorEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>E:\asp\FormGen-4.7-\FormGen-4.7-\FormGenerator\Properties\PublishProfiles\osaaaamaa-001-site1 - Web Deploy2.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>E:\asp\FormGen-4.7-\FormGen-4.7-\FormGenerator\Properties\PublishProfiles\FolderProfile2.pubxml</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
   </PropertyGroup>
   <ProjectExtensions>

@@ -14,130 +14,148 @@
         {
             @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4> Edit Field</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
+            <div class="form-horizontal">
+                <h4> Edit Field</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Caption, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Caption, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.Caption, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Caption, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Caption, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.Caption, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.TextBefore, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TextBefore, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.TextBefore, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TextBefore, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TextBefore, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.TextBefore, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.TextAfter, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TextAfter, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.TextAfter, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TextAfter, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TextAfter, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.TextAfter, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FieldTypeId, "FieldTypeId", htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.DropDownList("FieldTypeId", null, htmlAttributes: new { @class = "dropdown-item" })
-                    @Html.ValidationMessageFor(model => model.FieldTypeId, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FieldTypeId, "FieldTypeId", htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.DropDownList("FieldTypeId", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ValidationMessageFor(model => model.FieldTypeId, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.SelectListId, "SelectListId", htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.DropDownList("SelectListId", null, htmlAttributes: new { @class = "dropdown-item" })
-                    @Html.ValidationMessageFor(model => model.SelectListId, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SelectListId, "SelectListId", htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.DropDownList("SelectListId", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ValidationMessageFor(model => model.SelectListId, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FieldOrder, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FieldOrder, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.FieldOrder, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FieldOrder, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FieldOrder, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.FieldOrder, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group"  style="display:none;">
-                @Html.LabelFor(model => model.FormId, "FormId", htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.DropDownList("FormId", null, htmlAttributes: new { @class = "dropdown-item" })
-                    @Html.ValidationMessageFor(model => model.FormId, "", new { @class = "text-danger" })
+                <div class="form-group" style="display:none;">
+                    @Html.LabelFor(model => model.FormId, "FormId", htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.DropDownList("FormId", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ValidationMessageFor(model => model.FormId, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MaxValue, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MaxValue, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.MaxValue, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaxValue, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MaxValue, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.MaxValue, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MinValue, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MinValue, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.MinValue, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MinValue, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MinValue, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.MinValue, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MaxLength, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MaxLength, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.MaxLength, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaxLength, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MaxLength, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.MaxLength, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MinLength, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MinLength, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.MinLength, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MinLength, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MinLength, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.MinLength, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.DefaultValue, htmlAttributes: new { @class = "control-label col-md-2" })<br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DefaultValue, new { htmlAttributes = new { @class = "form-control item" } })
-                    @Html.ValidationMessageFor(model => model.DefaultValue, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DefaultValue, htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DefaultValue, new { htmlAttributes = new { @class = "form-control item" } })
+                        @Html.ValidationMessageFor(model => model.DefaultValue, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.IsActive)
-                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsActive)
+                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="create-account" />
+
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="create-account" />
-
-                </div>
-            </div>
-        </div>
         }
-        </div>
     </div>
+</div>
 
 
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+@section Scripts {
+    @{
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="~/Content/js/demo/chart-area-demo.js"></script>
+        <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+
+    }
+}

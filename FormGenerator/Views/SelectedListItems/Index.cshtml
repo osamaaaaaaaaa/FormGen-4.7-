@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", new { id = @ViewData["ListId"] })
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -23,23 +20,68 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelectList.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-          
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="width:15% !important">
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td style="width:25% !important">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="width:25% !important">
+                @Html.DisplayFor(modelItem => item.SelectList.Name)
+            </td>
+            <td style="width:25% !important">
+                @*    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+
+
+
+                <a href="@Url.Action("Delete",  new { id = item.id })" style="margin:3px !important"class="btn btn-danger" asp-action="Delete" ">
+
+                    Delete
+                </a>
+
+                <a href="@Url.Action("Edit",  new { id = item.id })"style="margin:3px !important" class="btn btn-success" asp-controller="SelectedListItems" asp-action="Index" ">
+
+                    Edit
+                </a>
+            </td>
+        </tr>
+    }
+    <apan type="button" class="collapsible" style="width : 100% !important ">
+
+        <div class="col-12 col-md-3 text-center" style="margin:20px !important">
+            <a href="@Url.Action("Create", new { id = @ViewData["ListId"] })" class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Add New Value
+            </a>
+
+
+        </div>
+
+    </apan>
 </table>
+@section Scripts {
+    @{
+     
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="~/Content/js/demo/chart-area-demo.js"></script>
+        <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+
+    }
+}

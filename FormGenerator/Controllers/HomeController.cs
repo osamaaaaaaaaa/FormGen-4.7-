@@ -5,13 +5,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI;
 
 namespace FormGenerator.Controllers
 {
     public class HomeController : Controller
     {
+
+        private FormGeneratorEntities db = new FormGeneratorEntities();
+
         public ActionResult Index()
         {
+           ViewBag.formscount= db.Forms.ToList().Count;
+            ViewBag.formssubcount = db.UserSubmissions.ToList().Count;
             return View();
         }
 
@@ -38,14 +44,26 @@ namespace FormGenerator.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
-            if (Membership.ValidateUser(model.UserName, model.Password))
-                return View();
+ 
 
-            FormsAuthentication.SetAuthCookie(model.UserName, true);
-            return Redirect("/");
+            if (Membership.ValidateUser(model.UserName.ToString(), model.Password.ToString()))
+            {
+                FormsAuthentication.SetAuthCookie(model.UserName, true);
+               
+                return RedirectToAction("Index");
+            
+            }
+       
+
+
+            return View();
+
         }
+      public ActionResult Signout() {
+            FormsAuthentication.SignOut();
+           
+            return RedirectToAction("Index");
 
-
-
+        }
     }
 }

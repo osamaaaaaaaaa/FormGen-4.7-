@@ -11,10 +11,10 @@
     <tbody>
         <div class="col-12 col-md-3 text-center">
 
-               
+
             <a asp-action="Create" href="@Url.Action("Create")" class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-                  Add New Form
+                Add New Form
 
 
             </a>
@@ -36,13 +36,13 @@
 
                         <div class="text-secondary-d1 text-120">
                             Active Statue
-                          
-                                @Html.DisplayFor(modelItem => item.IsActive)
-                         
+
+                            @Html.DisplayFor(modelItem => item.IsActive)
+
                         </div>
                         <div class="text-secondary-d1 text-120">
-                           <a href="@Url.Action("userView", "formfields", new {id=item.Id})" target="_blank">Form Link..</a>
-                           
+                            <a href="@Url.Action("userView", "formfields", new {id=item.Id})" target="_blank">Form Link..</a>
+
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
 
                     <div class="col-12 col-md-3 text-center">
 
-                        <a  href="@Url.Action("Edit",new { id=item.Id})" class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">
+                        <a href="@Url.Action("Edit",new { id=item.Id})" class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">
 
 
                             <i class="fa fa-wrench" aria-hidden="true"></i> Edit
@@ -68,7 +68,7 @@
                             <a href=" @Url.Action("Index","formfields",new { id=item.Id})" asp-route-id="@item.Id" asp-controller="formfields" asp-action="Index" class="f-n-hover btn btn-warning btn-raised px-4 py-25 w-75 text-600" style="width:175px !important">Mange Fields</a>
                         </div>
                         <div class="mt-15" style="margin:10px !important">
-                            <a  href=" @Url.Action("Index","UserSubmissions",new { id=item.Id})" asp-route-id="@item.Id" asp-controller="UserSubmissions" asp-action="Index" class="f-n-hover btn btn-secondary btn-raised px-4 py-25 w-75 text-600" style="width:175px !important">
+                            <a href=" @Url.Action("Index","UserSubmissions",new { id=item.Id})" asp-route-id="@item.Id" asp-controller="UserSubmissions" asp-action="Index" class="f-n-hover btn btn-secondary btn-raised px-4 py-25 w-75 text-600" style="width:175px !important">
                                 See Results
                                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
 
@@ -86,3 +86,23 @@
 
 
 </table>
+@section Scripts {
+    @{
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="~/Content/js/demo/chart-area-demo.js"></script>
+        <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+
+    }
+}
